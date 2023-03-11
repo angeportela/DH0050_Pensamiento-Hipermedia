@@ -1,24 +1,73 @@
-function setup() {
-  // Define un lienzo de 720 pixeles de ancho y 400 de alto
-  createCanvas(720, 400);
-  background(0);
-  noStroke();
+// Where is the car
+let x, y;
 
-  fill(204);
-  triangle(18, 18, 18, 360, 81, 360);
-
-  fill(102);
-  rect(81, 81, 63, 63);
-
-  fill(204);
-  quad(189, 18, 216, 18, 216, 360, 144, 360);
-
-  fill(255);
-  ellipse(252, 144, 72, 72);
-
-  fill(204);
-  triangle(288, 18, 351, 360, 288, 360);
-
-  fill(255);
-  arc(479, 300, 280, 280, PI, TWO_PI);
+// crear la clase Carro
+class Carro {
+  constructor(alto,ancho,color,name){
+    this.alto = alto;
+    this.ancho = ancho;
+    this.color = color;
+    this.name = name;
+  } 
 }
+
+
+
+function setup() {
+
+  createCanvas(400, 200);
+  // Start position
+  y = height - height/4;
+  x = 0;
+  // crear una instancia de Carro llamada miCarro
+  let miCarro = new Carro (20,30,(255,255,255),"coche");
+  
+  console.log("miCarro ancho is: " + miCarro.ancho);
+  console.log("miCarro alto is: " + miCarro.alto);
+  console.log("Nombre de miCarro es: " + miCarro.name);
+}
+
+function draw() {
+  background(100);  
+  display();
+  move();
+  //console.log(miCarro.alto);
+  
+  let miCarro = new Carro (20,30,(255,255,255),"coche");
+  
+}
+
+function move(){
+  // Jiggling randomly
+  y = y + random(-1, 1);
+  
+  if (x > width) {
+    // Reset 
+    x = 0;
+    y = height - height/4;
+  } else {
+    // Moving up at a constant speed
+    x = x + 1;
+  }
+}
+
+function display(){
+  // Draw a car
+  stroke(50);
+  fill(597,628,452);
+  rect(x, y, 30, 20);
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
